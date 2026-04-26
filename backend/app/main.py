@@ -4,10 +4,12 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 from app.database import get_db
+from app.routers import auth as auth_router
+from app.routers import cart as cart_router
+from app.routers import orders as orders_router
 
-app = FastAPI(title="Anjali Boutique API", version="0.1.0")
+app = FastAPI(title="Anjali Boutique API", version="0.2.0")
 
-# Allow our future web/mobile apps to call this API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -16,10 +18,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Routers
+app.include_router(auth_router.router)
+app.include_router(cart_router.router)
+app.include_router(orders_router.router)
 
 @app.get("/")
 def root():
-    return {"message": "Anjali Boutique API is alive 🌸"}
+    return {"message": "Anjali Boutique API is alive 🌸", "version": "0.2.0"}
 
 
 @app.get("/products")
