@@ -7,6 +7,7 @@ from app.database import get_db
 from app.routers import auth as auth_router
 from app.routers import cart as cart_router
 from app.routers import orders as orders_router
+from app.routers import admin as admin_router
 
 app = FastAPI(title="Anjali Boutique API", version="0.2.0")
 
@@ -22,6 +23,7 @@ app.add_middleware(
 app.include_router(auth_router.router)
 app.include_router(cart_router.router)
 app.include_router(orders_router.router)
+app.include_router(admin_router.router)
 
 @app.get("/")
 def root():
