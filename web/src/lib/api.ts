@@ -75,5 +75,56 @@ export const login = (email: string, password: string) =>
 
 export const register = (email: string, password: string, name: string, phone?: string) =>
   api.post<{ access_token: string; user: User }>("/auth/register", { email, password, name, phone }).then((r) => r.data);
+// Order types
+export interface OrderItem {
+  product_name: string;
+  quantity: number;
+  size: string | null;
+  color: string | null;
+  price_at_purchase: number;
+  line_total: number;
+}
 
+export interface Order {
+  id: string;
+  order_number: string;
+  status: string;
+  subtotal: number;
+  total_amount: number;
+  shipping_name: string;
+  shipping_phone: string;
+  shipping_address: string;
+  shipping_city: string;
+  shipping_state: string;
+  shipping_pincode: string;
+  payment_method: string;
+  notes: string | null;
+  created_at: string;
+  items: OrderItem[];
+}
+
+export interface ShippingAddress {
+  full_name: string;
+  phone: string;
+  address_line1: string;
+  address_line2?: string;
+  city: string;
+  state: string;
+  pincode: string;
+  country?: string;
+}
+
+export interface PlaceOrderRequest {
+  shipping_address: ShippingAddress;
+  notes?: string;
+}
+
+export const placeOrder = (data: PlaceOrderRequest) =>
+  api.post<{ message: string; order: Order }>("/orders", data).then((r) => r.data);
+
+export const getOrder = (id: string) =>
+  api.get<Order>(`/orders/${id}`).then((r) => r.data);
+
+export const getOrders = () =>
+  api.get<{ count: number; orders: Order[] }>("/orders").then((r) => r.data);
 export default api;
