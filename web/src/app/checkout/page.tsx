@@ -33,11 +33,16 @@ export default function CheckoutPage() {
   const orderMutation = useMutation({
     mutationFn: placeOrder,
     onSuccess: (data: unknown) => {
-      const response = data as { order?: { id?: string }; id?: string };
-      const orderId = response?.order?.id || response?.id;
+      const response = data as {
+        order?: { id?: string };
+        order_id?: string;
+        id?: string;
+      };
+      const orderId = response?.order?.id || response?.order_id || response?.id;
       if (orderId) {
         router.push(`/orders/${orderId}`);
       } else {
+        console.warn("No order ID in response:", data);
         router.push("/products");
       }
     },
