@@ -1,70 +1,43 @@
-﻿# 🌸 Anjali Boutique - E-Commerce Platform
+﻿# 🌸 Anjali Boutique
 
-End-to-end e-commerce platform for an Indian ethnic wear boutique, featuring a customer storefront, Android app, and staff inventory dashboard.
+> A full-stack e-commerce platform for premium Indian ethnic wear — sarees, lehengas, kurtas, and more.
 
-## 🛠️ Tech Stack
-
-**Backend**
-- FastAPI (Python 3.12) — REST API
-- SQLAlchemy — ORM and database queries  
-- PostgreSQL (Supabase) — Production database hosted on AWS Mumbai
-- Pydantic — Data validation and settings
-
-**Frontend** *(in progress)*
-- Next.js 14 — Customer-facing website + staff dashboard
-- React Native (Expo) — Android mobile app
-- Tailwind CSS — Styling
-- TanStack Query — Data fetching and caching
-
-**Infrastructure** *(in progress)*
-- Railway — Backend hosting
-- Vercel — Web hosting
-- Cloudinary — Image hosting and CDN
-- Razorpay — Payment integration
-
-## 📁 Project Structure
-
-\\\
-anjali-boutique/
-├── backend/          # FastAPI Python backend
-│   └── app/
-│       ├── main.py       # API entry point and routes
-│       ├── database.py   # Database connection
-│       └── config.py     # Environment configuration
-├── web/              # Next.js website (in progress)
-└── mobile/           # React Native Android app (in progress)
-\\\
-
-## 🚀 API Endpoints
-
-- \GET /\ - Health check
-- \GET /products\ - List all active products with categories
-- \GET /categories\ - List all product categories
-
-More endpoints coming: auth, cart, orders, admin analytics.
-
-## 🏃 Local Development
-
-\\\ash
-cd backend
-python -m venv venv
-.\\venv\\Scripts\\Activate.ps1   # Windows
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-\\\
-
-API runs on \http://localhost:8000\. Interactive docs at \http://localhost:8000/docs\.
-
-## 📊 Database Schema
-
-8 tables covering: users, products, categories, cart_items, orders, order_items, inventory_logs.
-
-## 👤 Author
-
-**Sai Kiran Konda**  
-Data Analyst | Full-Stack Developer  
-[LinkedIn](https://linkedin.com/in/sai-kiran-konda) · [GitHub](https://github.com/saikirankonda99)
+[![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://anjali-boutique.vercel.app)
+[![API](https://img.shields.io/badge/API-Railway-blueviolet?style=for-the-badge)](https://anjali-boutique-production.up.railway.app/docs)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Python_3.12-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791?style=for-the-badge&logo=postgresql)](https://supabase.com)
 
 ---
 
-🚧 *This project is in active development. Star the repo to follow progress!*
+## 🚀 Live Demo
+
+- **🛍️ Storefront**: [anjali-boutique.vercel.app](https://anjali-boutique.vercel.app)
+- **📡 API Docs**: [anjali-boutique-production.up.railway.app/docs](https://anjali-boutique-production.up.railway.app/docs)
+
+**Test credentials**:
+- Email: `saikiran@anjaliboutique.com`
+- Password: `SecurePass123`
+
+---
+
+## ✨ Features
+
+### Customer-facing
+- 🔍 Browse 5 product categories (sarees, lehengas, kurtas, salwar suits, accessories)
+- 🛒 Persistent shopping cart with size + color variants
+- 🔐 JWT-secured authentication (register + login)
+- 💳 Atomic order placement with real-time stock validation
+- 📦 Order history with detailed confirmation pages
+- 📱 Fully mobile-responsive UI
+
+### Backend / Admin
+- 🏗️ 24 REST endpoints (auth, cart, orders, admin analytics)
+- 📊 Admin analytics: sales overview, top products, sales trends, low stock alerts
+- 📜 Inventory audit logs for every stock change
+- 🔄 Atomic transactions prevent overselling
+- 🛡️ bcrypt password hashing + JWT with 7-day expiry
+
+---
+
+## 🏗️ Architecture
